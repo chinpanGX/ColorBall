@@ -12,6 +12,7 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour, ISpawn
 {
     [SerializeField] private GameObject[] _itemObject; // リスポーンさせるアイテムオブジェクト
+    private Vector2 _spawnPoistion; // スポーンする位置
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,9 @@ public class ItemSpawner : MonoBehaviour, ISpawn
         // ゲーム中はレンダリングしない
         Renderer renderer = GetComponent<Renderer>();
         renderer.enabled = false;
+
+        // Scaleの大きさが出現させる範囲になる
+        _spawnPoistion = new Vector2(this.transform.localScale.x / 2, this.transform.localScale.z / 2);
     }
 
     // Update is called once per frame
@@ -31,11 +35,10 @@ public class ItemSpawner : MonoBehaviour, ISpawn
     public void Spawn(int index)
     {
         // 出現位置を乱数で出す
-        float x = Random.Range(-7, 8);
-        float z = Random.Range(-7, 8);
-        Vector3 position = new Vector3(x, 0.7f, z);
+        float x = Random.Range(-_spawnPoistion.x, _spawnPoistion.x);
+        float z = Random.Range(-_spawnPoistion.y, _spawnPoistion.y);
 
-        GameObject obj = Instantiate(_itemObject[index], position, Quaternion.identity);
+        GameObject obj = Instantiate(_itemObject[index], new Vector3(x, this.transform.position.y, z), Quaternion.identity);
 
         // 出現から10秒たったら削除
         Destroy(obj, 20.0f);
