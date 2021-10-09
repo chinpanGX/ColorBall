@@ -11,7 +11,9 @@ using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
 {
-    private ItemSpawner _itemSpawner;
+    private ItemSpawner _itemSpawner;           // アイテムスポナー
+
+    // スポーンする時間
     private float _span; // スポーンの間隔
     private float _time; //時間計測
 
@@ -32,6 +34,7 @@ public class ItemGenerator : MonoBehaviour
         {
             // 色をランダムで決める
             int i = (int)Random.Range(0, 3);
+    
             _itemSpawner.Spawn(i); // アイテムをスポーン
             _time = 0;
         }

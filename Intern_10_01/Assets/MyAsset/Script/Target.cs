@@ -15,7 +15,13 @@ public class Target : MonoBehaviour, ISpawn
     private GM_Event _event;
 
     private float _time; // 時間計測
+    
     private int _timeLeftItem;
+
+    // 
+    private float _destroyTime;
+    private float _interval; //点滅周期
+    private float _count;
 
     public bool _canSpawn { get; set; } // スポーンできるかどうか
 
@@ -29,6 +35,7 @@ public class Target : MonoBehaviour, ISpawn
 
         _event = GameObject.Find("GameManager").GetComponent<GM_Event>();
 
+        _count = Time.time;
         // 最初はすべてスポーンできる状態にする
         _canSpawn = true;
     }
@@ -37,7 +44,9 @@ public class Target : MonoBehaviour, ISpawn
     void Update()
     {
         _time += Time.deltaTime;
-
+        _count = Time.time;
+        _interval = 1.0f;
+        _destroyTime = 0;
         // 残す時間～２倍の時間でスポーンできるようにする
         int random = Random.Range(_timeLeftItem, _timeLeftItem * 2 + 1);
         if(_time > random)
@@ -56,6 +65,9 @@ public class Target : MonoBehaviour, ISpawn
         // 削除する時間を決める 5～10秒の間
         int destoryTime = Random.Range(5, 11);
         _timeLeftItem = destoryTime;
+
+       
         Destroy(obj, destoryTime);
     }
 }
+
