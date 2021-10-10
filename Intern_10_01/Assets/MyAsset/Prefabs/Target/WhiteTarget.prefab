@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7475570238125387202}
   - component: {fileID: 7475570238125387203}
   - component: {fileID: 357400980312558321}
+  - component: {fileID: -7763286020885672981}
   m_Layer: 0
   m_Name: WhiteTarget
   m_TagString: WhiteTarget
@@ -93,3 +94,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7763286020885672981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7475570238125387201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83937d1bf7b7484e9c3b31f00b1a9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -35,14 +35,14 @@ public class TargetGenerator : MonoBehaviour
             for (int i = 0; i < _targetNum; i++)
             {
                 // リスポーンできる状態を発見
-                if (_targetObjects[i].GetComponent<Target>()._canSpawn)
+                if (_targetObjects[i].GetComponent<TargetSpawner>()._canSpawn)
                 {
                     // 1/10の確率でリスポーンしない
                     int random = (int)Random.Range(0, 11);
                     if (random != 0)
                     {
                         int cube = (int)Random.Range(0, 7);
-                        _targetObjects[i].GetComponent<Target>().Spawn(cube);
+                        _targetObjects[i].GetComponent<TargetSpawner>().Spawn(cube);
                     }
                 }
             }
