@@ -116,7 +116,7 @@ public class Gun : MonoBehaviour
         {
             obj.GetComponent<GunMaterialList>().SetMaterial(_index);
         }
-        _particleObject.GetComponent<ParticleList>().None();
+        _particleObject.GetComponent<ParticleSpawner>().None();
     }
 
     // マテリアルをセットする
@@ -132,7 +132,7 @@ public class Gun : MonoBehaviour
     // パーティクルをセットする
     private void SetParticle()
     {
-        _particleObject.GetComponent<ParticleList>().Spawn(_index);
+        _particleObject.GetComponent<ParticleSpawner>().Spawn(_index);
     }
 
     // 射撃

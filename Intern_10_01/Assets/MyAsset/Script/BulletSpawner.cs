@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour, ISpawn
+class BulletSpawner : Spawner
 {
     [SerializeField] private GameObject[] _bulletObject;
     private float _power = 5000.0f;
@@ -34,7 +34,7 @@ public class BulletSpawner : MonoBehaviour, ISpawn
     }
 
     // インスタンスの生成(param = 'index' 配列の番号)
-    public void Spawn(int index)
+    public override void Spawn(int index)
     {
         GameObject bullet = Instantiate(_bulletObject[index], transform.position, transform.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * _power);

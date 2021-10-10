@@ -9,8 +9,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSpawner : MonoBehaviour, ISpawn
-{
+class ItemSpawner : Spawner
+{ 
     [SerializeField] GameObject _playerObject;      // プレイヤー
     [SerializeField] private GameObject[] _itemObject; // リスポーンさせるアイテムオブジェクト
 
@@ -35,7 +35,7 @@ public class ItemSpawner : MonoBehaviour, ISpawn
     }
 
     // 引数に該当する色のアイテムをスポーンさせる
-    public void Spawn(int index)
+    public override void Spawn(int index)
     {
         // プレイヤーの位置を取得する
         var playerPosition = _playerObject.transform.position;
